@@ -72,7 +72,7 @@ CREATE TABLE Cliente (
     id_cliente INTEGER PRIMARY KEY,
     nome_cliente VARCHAR,
     endereco VARCHAR,
-    hash_senha INTEGER
+    hash_senha VARCHAR
 );
 
 CREATE TABLE Proc_serie (
