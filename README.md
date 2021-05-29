@@ -1,5 +1,8 @@
 # BD2_EP
-ARTEFATOS A SEREM ENTREGUES:
+
+## Parte 1
+
+### ARTEFATOS A SEREM ENTREGUES:
 
 *a)* (artefato do tipo texto) O grupo deve escolher um contexto no qual seja possível desenvolvimento de
 um sistema de banco de dados. Este contexto deverá ser especificado textualmente, de forma concisa,
@@ -54,3 +57,23 @@ instruções existente em álgebra).
 Obs. 2: A complexidade das consultas será determinante para execução de outras partes do trabalho.
 Assim, a depender das consultas projetadas, pode ser possível ter que elaborar novas consultas. Por isso,
 é interessante o grupo já analisar as demais partes do trabalho, a seguir.
+
+### Ordem de população das tabelas
+
+1. Desenvolvedor
+2. Fabricante
+3. Tipo produto
+4. Vendedor
+5. Cliente
+6. Interface
+7. Produto
+8. Placa mae
+9. Memoria primaria
+10. Memoria secundaria
+11. Processador
+12. Proc serie
+13. Placa de video
+14. Video serie
+15. Tem interface
+16. Tem peça
+17. Operação venda
