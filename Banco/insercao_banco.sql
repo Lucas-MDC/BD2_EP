@@ -54,7 +54,9 @@ insert into Interface values
 (default, 'VGA'),
 (default, 'HDMI'),
 (default, 'Socket AM4'),
-(default, 'rPGA 988B/Socket G2');
+(default, 'rPGA 988B/Socket G2'),
+(default, 'DDR3'),
+(default, 'DDR4');
 
 --------- PRODUTO ---------
 
@@ -89,5 +91,36 @@ insert into Produto values
 ('PC Nasa', default, 'roda crisis', 'pcn', 'maquina_1', 40000, null, '2017-04-22', 1 , 6),
 ('PC Each', default, 'depreciado desde 1997', 'pceach', 'maquina_1', 500, null, '2003-04-23', 1, 6);
 
+--------- Pecas especificas ---------
+
+--memoria primaria
+insert into Memoria_Primaria values
+(4,2466,200,600,7),
+(8,2466,300,800,8),
+(16,2666,500,1000,9);
+
+--memoria segundaria
+insert into Memoria_secundaria values
+(240,2000,600,4),
+(500,2600,800,5),
+(1000,3000,3500,6);
+
+--processador
+insert into Processador values
+(125, 3.3, 4, 1, null),
+(200, 4.2, 8, 2, null),
+(3599, 250.0, 5000, 3, null);
+
+--placa video--
+insert into Placa_Video values
+(1200,4,13,null),
+(2400,8,14,null),
+(3600,12,15,null);
+
+--placa mae--
+insert into Placa_Mae values
+(70, 80, 9, 15, 3, 5, 10),
+(80, 85, 12, 20, 3, 3, 11),
+(90, 70, 10, 20, 4, 4, 12);
 
 

@@ -27,7 +27,7 @@ CREATE TABLE Processador (
     Tdp_proc FLOAT,
     freq_proc FLOAT,
     cores_proc INTEGER,
-    fk_Produto_id_produto SERIAL PRIMARY KEY,
+    fk_Produto_id_produto INTEGER PRIMARY KEY,
     fk_Proc_serie_id_proc_serie INTEGER
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE Placa_Mae (
     Comprimento FLOAT,
     Altura FLOAT,
     Tamanho_bios FLOAT,
-    fk_Produto_id_produto SERIAL PRIMARY KEY
+    fk_Produto_id_produto INTEGER PRIMARY KEY
 );
 
 CREATE TABLE Memoria_primaria (
@@ -46,20 +46,20 @@ CREATE TABLE Memoria_primaria (
     freq_mem_prim FLOAT,
     leitura_mem_prim FLOAT,
     escrita_mem_prim FLOAT,
-    fk_Produto_id_produto SERIAL PRIMARY KEY
+    fk_Produto_id_produto INTEGER PRIMARY KEY
 );
 
 CREATE TABLE Memoria_Secundaria (
     tamanho_mem_sec FLOAT,
     leitura_mem_sec FLOAT,
     escritura_mem_sec FLOAT,
-    fk_Produto_id_produto SERIAL PRIMARY KEY
+    fk_Produto_id_produto INTEGER PRIMARY KEY
 );
 
 CREATE TABLE Placa_Video (
     freq_placa_video FLOAT,
     tamanho_memoria_placa_video FLOAT,
-    fk_Produto_id_produto SERIAL PRIMARY KEY,
+    fk_Produto_id_produto INTEGER PRIMARY KEY,
     fk_Placa_Video_Serie_id_placa_serie INTEGER
 );
 
