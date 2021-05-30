@@ -26,4 +26,6 @@ from
 	rand_venda
 inner join produto p
 	on rand_venda.fk_prod = p.id_produto
+
+-- https://en.wikipedia.org/wiki/SQL:1999
 	
