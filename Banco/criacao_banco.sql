@@ -2,7 +2,11 @@
 
 CREATE TABLE Produto (
     nome_produto VARCHAR,
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_produto SERIAL PRIMARY KEY,
+=======
+    id_produto INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     descri VARCHAR,
     modelo VARCHAR,
     link_foto VARCHAR,
@@ -14,12 +18,20 @@ CREATE TABLE Produto (
 );
 
 CREATE TABLE Fabricante (
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_fab SERIAL PRIMARY KEY,
+=======
+    id_fab INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     nome_fab VARCHAR UNIQUE
 );
 
 CREATE TABLE Desenvolvedor (
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_dev SERIAL PRIMARY KEY,
+=======
+    id_dev INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     nome_dev VARCHAR UNIQUE
 );
 
@@ -64,12 +76,20 @@ CREATE TABLE Placa_Video (
 );
 
 CREATE TABLE Vendedor (
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_vendedor SERIAL PRIMARY KEY,
+=======
+    id_vendedor INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     nome_vendedor VARCHAR UNIQUE
 );
 
 CREATE TABLE Cliente (
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_cliente SERIAL PRIMARY KEY,
+=======
+    id_cliente INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     nome_cliente VARCHAR UNIQUE,
     endereco VARCHAR,
     hash_senha VARCHAR
@@ -77,7 +97,11 @@ CREATE TABLE Cliente (
 
 CREATE TABLE Proc_serie (
     nome_proc_serie VARCHAR UNIQUE,
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_proc_serie SERIAL PRIMARY KEY
+=======
+    id_proc_serie INTEGER PRIMARY KEY
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
 );
 
 CREATE TABLE Operacao_venda (
@@ -91,17 +115,29 @@ CREATE TABLE Operacao_venda (
 );
 
 CREATE TABLE Interface (
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_interface SERIAL PRIMARY KEY,
+=======
+    id_interface INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     nome_interface VARCHAR UNIQUE
 );
 
 CREATE TABLE Placa_Video_Serie (
     nome_placa_video_serie VARCHAR UNIQUE,
+<<<<<<< HEAD:Banco/criacao_banco.sql
     id_placa_serie SERIAL PRIMARY KEY
 );
 
 CREATE TABLE tipo_produto (
     id_tipo SERIAL PRIMARY KEY,
+=======
+    id_placa_serie INTEGER PRIMARY KEY
+);
+
+CREATE TABLE tipo_produto (
+    id_tipo INTEGER PRIMARY KEY,
+>>>>>>> 992b02a47178bab4ae4b5eebe6c484292d52a8d2:Script.sql
     nome_tipo VARCHAR UNIQUE
 );
 
