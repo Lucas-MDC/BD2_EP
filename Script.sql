@@ -3,7 +3,7 @@
 CREATE TABLE Produto (
     nome_produto VARCHAR,
     id_produto INTEGER PRIMARY KEY,
-    desc VARCHAR,
+    descri VARCHAR,
     modelo VARCHAR,
     link_foto VARCHAR,
     preco_produto FLOAT,
@@ -15,12 +15,12 @@ CREATE TABLE Produto (
 
 CREATE TABLE Fabricante (
     id_fab INTEGER PRIMARY KEY,
-    nome_fab VARCHAR
+    nome_fab VARCHAR UNIQUE
 );
 
 CREATE TABLE Desenvolvedor (
     id_dev INTEGER PRIMARY KEY,
-    nome_dev VARCHAR
+    nome_dev VARCHAR UNIQUE
 );
 
 CREATE TABLE Processador (
@@ -65,18 +65,18 @@ CREATE TABLE Placa_Video (
 
 CREATE TABLE Vendedor (
     id_vendedor INTEGER PRIMARY KEY,
-    nome_vendedor VARCHAR
+    nome_vendedor VARCHAR UNIQUE
 );
 
 CREATE TABLE Cliente (
     id_cliente INTEGER PRIMARY KEY,
-    nome_cliente VARCHAR,
+    nome_cliente VARCHAR UNIQUE,
     endereco VARCHAR,
     hash_senha VARCHAR
 );
 
 CREATE TABLE Proc_serie (
-    nome_proc_serie VARCHAR,
+    nome_proc_serie VARCHAR UNIQUE,
     id_proc_serie INTEGER PRIMARY KEY
 );
 
@@ -91,32 +91,32 @@ CREATE TABLE Operacao_venda (
 );
 
 CREATE TABLE Interface (
-    id_interface INTEGER,
-    nome_interface VARCHAR,
-    PRIMARY KEY (id_interface, nome_interface)
+    id_interface INTEGER PRIMARY KEY,
+    nome_interface VARCHAR UNIQUE
 );
 
 CREATE TABLE Placa_Video_Serie (
-    nome_placa_video_serie VARCHAR,
+    nome_placa_video_serie VARCHAR UNIQUE,
     id_placa_serie INTEGER PRIMARY KEY
 );
 
 CREATE TABLE tipo_produto (
     id_tipo INTEGER PRIMARY KEY,
-    nome_tipo VARCHAR
+    nome_tipo VARCHAR UNIQUE
 );
 
 CREATE TABLE Tem_Peca (
     fk_Produto_id_produto INTEGER,
     fk_Produto_id_produto_ INTEGER,
-    qtd_peca INTEGER
+    qtd_peca INTEGER,
+    PRIMARY KEY (fk_Produto_id_produto, fk_Produto_id_produto_)
 );
 
 CREATE TABLE tem_interface (
     fk_Interface_id_interface INTEGER,
-    fk_Interface_nome_interface VARCHAR,
     fk_Produto_id_produto INTEGER,
-    qtd_interface INTEGER
+    qtd_interface INTEGER,
+    PRIMARY KEY (fk_Interface_id_interface, fk_Produto_id_produto)
 );
  
 ALTER TABLE Produto ADD CONSTRAINT FK_Produto_2
@@ -192,8 +192,8 @@ ALTER TABLE Tem_Peca ADD CONSTRAINT FK_Tem_Peca_2
     ON DELETE CASCADE;
  
 ALTER TABLE tem_interface ADD CONSTRAINT FK_tem_interface_1
-    FOREIGN KEY (fk_Interface_id_interface, fk_Interface_nome_interface)
-    REFERENCES Interface (id_interface, nome_interface)
+    FOREIGN KEY (fk_Interface_id_interface)
+    REFERENCES Interface (id_interface)
     ON DELETE RESTRICT;
  
 ALTER TABLE tem_interface ADD CONSTRAINT FK_tem_interface_2
