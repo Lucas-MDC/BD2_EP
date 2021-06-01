@@ -1,0 +1,16 @@
+{
+  "name": "retail",
+  "version": "1.0.0",
+  "description": "ep bd2",
+  "main": "main.js",
+  "scripts": {
+    "test": "clear; nodemon ./main.js 127.0.0.1 8002;"
+  },
+  "author": "lucas moura de carvalho, willy lee",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "pg": "^8.6.0"
+  }
+}
