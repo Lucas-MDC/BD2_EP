@@ -20,28 +20,8 @@ order by
 limit 5;
 
 /*
-2. Selecione o nome, o nome de suas fabricantes, e as frequencias das placas de video cuja frequencia seja maior que a media das frequencias de placas de video. (não há formula de algebra relacional para essa query).
+2. Selecione o nome, o nome de suas fabricantes, e as frequencias das placas de video cuja frequencia seja maior que a media das frequencias de todas as placas de video. (não há formula de algebra relacional para essa query).
 */
-with media as
-(
-	select distinct
-		f.nome_fab,
-		p.nome_produto,
-		pv.freq_placa_video,
-		avg(pv.freq_placa_video) over(partition by fk_tipo_produto_id_tipo) media_freq
-	from
-		placa_video pv
-	inner join Produto p
-		on pv.fk_produto_id_produto = p.id_produto
-	inner join fabricante f
-		on p.fk_fabricante_id_fab = f.id_fab
-)
-select
-	*
-from
-	media
-where
-	freq_placa_video >= media_freq
 with media as
 (
 	select distinct
