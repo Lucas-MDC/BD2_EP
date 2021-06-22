@@ -77,3 +77,8 @@ Assim, a depender das consultas projetadas, pode ser possível ter que elaborar 
 15. Tem interface
 16. Tem peça
 17. Operação venda
+
+### Regras de negócio
+
+1. Só máquinas podem ter peças e uma peça não pode ter ela mesma. Vulgo (pk, pk, x) na tabela.
+2. Toda placa de video ou processador necessáriamente tem uma série.

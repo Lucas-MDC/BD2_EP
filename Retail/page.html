@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<style>
+    #body
+    {
+        position: relative;
+        background: linear-gradient(to bottom, #111144 0%, #000000 100%) fixed;
+    }
+
+    #header
+    {
+        margin-left: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
+
+    #header_img 
+    {
+        width: 100%; 
+        height: 400px;
+    }
+
+    #main_section
+    {
+        height: 100%;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    #main_section_header
+    {
+        height: 90px;
+        width: 100%;
+        background-color: grey;
+        border-radius: 5px;
+        padding: 0 0 0 0;
+        grid-template-columns: auto auto auto auto auto auto ;
+    }
+
+    .button-belt
+    {
+        position: relative;
+        display: inline-grid;
+    }
+
+    .button-belt-button 
+    {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .button-belt-image
+    {
+    }
+
+</style>
+
+<HEAD>
+    <title>Retailer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</HEAD>
+
+<body id="body">
+    <!--Imagem no topo da pagina-->
+    <div id="header" class="container-fluid">
+        <img id="header_img" src="/resources/boardb.jpg"> 
+    </div> 
+
+    <!--Corpo principal de atividades-->
+    <div id="main_section" class="container-fluid">
+        <div id="main_section_header" class="button-belt">
+            <!--<div class="button-belt-button"><img class=".button-belt-image" src="/resources/cpu_simple.png"> </div>-->
+            <div class="button-belt-button">cpu</div> 
+            <div class="button-belt-button">gpu</div>
+            <div class="button-belt-button">memp</div>  
+            <div class="button-belt-button">mems</div> 
+            <div class="button-belt-button">mb</div> 
+            <div class="button-belt-button">pc</div> 
+        </div>
+    </div> 
+</body>
+
+<script>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // UI
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Conexao servidor
+
+    async function queryServer(url)
+    {
+        let response = await fetch(url);
+        data         = await response.json(); 
+        return data;
+    };
+
+    async function postServer(url, data)
+    {
+        let options  = {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}};
+        let response = await fetch(url, options);
+        data         = await response.json();
+        return data;
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Main
+</script>
+
