@@ -1,4 +1,6 @@
 
+## Regra 1
+
 ```sql
 select * from tem_peca where 
 	(fk_produto_id_produto = 16 and fk_produto_id_produto_ = 1)
@@ -42,4 +44,21 @@ update
 	tem_peca
 set
 	fk_produto_id_produto  = 16
+```
+
+## Regra 2
+
+```sql
+--Cria uma seria não padrão
+insert into Proc_Serie values
+  ('Serie predefinida RYZEN BERSERK');
+
+--Insere um processador para essa série
+insert into Processador values
+  (3599, 250.0, 5000, 3, 71);
+
+--Insere dois processador sem série, que receberão duas novas séries padrão
+insert into Processador values
+  (125, 3.3, 4, 1, null)
+, (200, 4.2, 8, 2, null);
 ```
