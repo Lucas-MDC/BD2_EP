@@ -1,0 +1,64 @@
+\documentclass[9pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx} %imagens
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{empheq}
+\usepackage{xcolor}
+%* * * * * * * * * * * * * * * * * *%
+
+
+% margens do documento
+\usepackage{geometry}
+\geometry
+{
+	a4paper     ,
+	left=3.0cm  ,
+ 	top=3.5cm   , 
+ 	right=2.0cm ,
+ 	bottom=2.0cm
+}
+
+% indenta o primeiro parágrafo
+\usepackage{indentfirst}
+
+% indentação dos parágrafos
+\setlength{\parindent}{1.25cm}
+
+% espaço antes de cada parágrafo
+\setlength{\parskip}{1em}
+
+% espaço entre as linhas de cada parágrafo
+\renewcommand{\baselinestretch}{1.2}
+
+\title{Tema do Trabalho de Banco de Dados 2}
+\date{31/05/2021}
+
+%* * * * * * * * * MATH * * * * * * * * *%
+
+% espaço vertical entre linhas dentro de \align
+\setlength{\jot}{10pt}
+
+% inicio do documento
+\begin{document}
+
+% disabilita a numeração de páginas
+\pagenumbering{gobble}
+\maketitle
+
+\newpage
+% habilita a numeração de páginas
+\pagenumbering{arabic}
+
+\section*{Integrantes}
+
+\begin{itemize}
+	\item Lucas Moura de Carvalho : 9862905 : lucas.moura.carvalho@usp.br
+	\item Willy Lee : 9877961 : willy.lee@usp.br
+\end{itemize}
+
+\section*{Tema}
+	
+	O tema do trabalho consiste na criação de um sistema que tem como finalidade de servir de data warehouse para construção de cubos multidimensionais.  Esse data warehouse armazena dados de vendas de máquinas prontas e componentes de computadores, além de sua catalogação junto aos respectivos vendedores, fabricantes e desenvolvedores. O sistema deve ter pelo menos o primeiro item da lista: um site onde um usuario faça login e possa pesquisar e comprar maquinas e peças de computadar e uma interface web para realização de CRUD no banco. O tema pode servir de base para uma empresa de vendas ou revendas de peças. 
+\end{document}
