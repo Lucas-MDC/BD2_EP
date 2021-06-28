@@ -1,7 +1,7 @@
 create view vendas_recentes_intel as
 select 
 	ov.*,
-	(now()::date - ov.data_venda::date) AS dias_distancia
+	DATE_DIFF(CURRENT_DATE, ov.data_venda, day)
 from
 	Produto p
 inner join Fabricante fab
@@ -11,7 +11,13 @@ inner join 	Operacao_venda ov
 where 
 	nome_fab = 'intel' 
 	and 
-	--No maximo 90 dias atras
-	(now()::date - ov.data_venda::date) < 90
+	DATE_DIFF(CURRENT_DATE, ov.data_venda, day) < 90
 order by
 	data_venda desc;
+	
+
+	
+
+
+
+	

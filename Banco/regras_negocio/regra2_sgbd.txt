@@ -26,12 +26,15 @@ BEGIN
         Processador pr
     set
         fk_Proc_serie_id_proc_serie = x.id_proc_serie
+    --Feito com subquery pois a tabela Processador é utilizada duas vezes
     from
     (
         select 
             *
         from
+            --Pega procesasdor
             Processador pr
+            --Todos os produtos que sao processador
         inner join Produto p
             on p.id_produto = pr.fk_Produto_id_produto
         inner join Proc_serie ps
@@ -39,6 +42,7 @@ BEGIN
             --Tem que ser o processdor certo ativado pelo trigger for each row
             on ps.nome_proc_serie = (p.nome_produto || ' Serie ' || NEW.fk_Produto_id_produto)
     ) x
+    --Onde as FKs batem (como se fosse um join)
     where
         x.fk_Produto_id_produto = pr.fk_Produto_id_produto;
 

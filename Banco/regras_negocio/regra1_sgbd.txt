@@ -18,9 +18,12 @@ BEGIN
                 select
                     id_produto
                 from
+                    --Pega produto
                     produto p 
+                    --Pega o tipo do produto
                 inner join tipo_produto tp 
                     on p.fk_tipo_produto_id_tipo = tp.id_tipo
+                    --Produtos do tipo maquina
                 where
                     nome_tipo = 'maquina'
             )
@@ -31,9 +34,12 @@ BEGIN
                 select
                     id_produto
                 from
+                    --Pega produto
                     produto p 
+                    --Pega o tipo do produto
                 inner join tipo_produto tp 
                     on p.fk_tipo_produto_id_tipo = tp.id_tipo
+                    --Produtos do tipo maquina
                 where
                     nome_tipo = 'maquina'
             ));
