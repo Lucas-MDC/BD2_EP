@@ -1,0 +1,32 @@
+-------------------------- Objetos Complexos --------------------------
+CREATE TYPE endereco AS (
+	estado      varchar,
+	cidade      varchar,
+	bairro      varchar,
+	especifico  varchar,
+	numero      integer,
+    complemento varchar
+);
+
+CREATE TABLE cliente (
+	id_cliente   SERIAL  PRIMARY KEY,
+    nome_cliente VARCHAR UNIQUE     ,
+    "endereco"   endereco[]         ,
+    hash_senha   VARCHAR
+);
+
+-------------------------- Herança --------------------------
+CREATE TABLE Placa_Video_Quente (
+    prioridade integer
+) INHERITS (Produto, Placa_Video);
+
+-------------------------- Tipos Referência --------------------------
+CREATE TYPE Miner   
+(
+    id   integer,
+    peca ref(Produto) scope Produto
+);
+
+CREATE TABLE bitcoin_miner of Miner ref is id_produto derived
+CREATE TABLE chia_miner    of Miner ref is id_produto derived
+CREATE TABLE altcoin_miner of Miner ref is id_produto derived

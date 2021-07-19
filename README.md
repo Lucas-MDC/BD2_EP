@@ -82,3 +82,10 @@ Assim, a depender das consultas projetadas, pode ser possível ter que elaborar 
 
 1. Só máquinas podem ter peças e uma peça não pode ter ela mesma. Vulgo (pk, pk, x) na tabela.
 2. Toda placa de video ou processador necessáriamente tem uma série.
+
+### Links
+
+https://arctype.com/blog/postgresql-query-plan-anatomy/
+https://severalnines.com/database-blog/overview-various-auxiliary-plan-nodes-postgresql <<<<
+https://pganalyze.com/docs/explain/basics-of-postgres-query-planning
+https://thoughtbot.com/blog/reading-an-explain-analyze-query-plan

@@ -14,7 +14,7 @@ inner join tipo_produto tp
 where
 	tp.nome_tipo != 'maquina'
 group by
-	p.id_produto, tp.nome_tipo
+	p.nome_produto, tp.nome_tipo
 order by
 	num desc
 limit 5;
