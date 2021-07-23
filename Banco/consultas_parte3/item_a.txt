@@ -11,7 +11,7 @@ CREATE TYPE endereco AS (
 CREATE TABLE cliente (
 	id_cliente   SERIAL  PRIMARY KEY,
     nome_cliente VARCHAR UNIQUE     ,
-    "endereco"   endereco[]         ,
+    "endereco"   endereco[]         , --atributo composto e multivalorado 
     hash_senha   VARCHAR
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE Placa_Video_Quente (
 CREATE TYPE Miner   
 (
     id   integer,
-    peca ref(Produto) scope Produto
+    peca ref(Produto) scope Produto --referência
 );
 
 CREATE TABLE bitcoin_miner of Miner ref is id_produto derived

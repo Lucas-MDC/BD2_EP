@@ -1,4 +1,3 @@
-explain analyse
 select 	
 	x.nome_produto,
 	x.nome_tipo,
