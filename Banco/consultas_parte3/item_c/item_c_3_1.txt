@@ -1,0 +1,28 @@
+select 
+	maquina.nome_produto,
+	maquina.preco_produto,
+	sum(p.preco_produto * maquina.qtd_peca)
+from
+(
+	select 
+		p.nome_produto,
+		p.id_produto,
+		p.preco_produto,
+		p.fk_tipo_produto_id_tipo,
+		tp.fk_produto_id_produto_,
+		tp.qtd_peca
+	from
+		Tem_Peca tp 
+	inner join
+		produto p
+	on
+		md5(cast(tp.fk_produto_id_produto as varchar)) = md5(cast(p.id_produto as varchar))
+) maquina
+inner join produto p 
+	on maquina.fk_produto_id_produto_ = p.id_produto
+inner join tipo_produto tprod
+	on p.fk_tipo_produto_id_tipo = tprod.id_tipo
+group by
+	maquina.nome_produto, maquina.preco_produto
+order by
+	sum(p.preco_produto * maquina.qtd_peca) desc;

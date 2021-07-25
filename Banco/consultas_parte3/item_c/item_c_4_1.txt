@@ -1,0 +1,30 @@
+select
+	p.nome_produto placa_mae,
+	count(p.nome_produto) quantidade_pecas_compativeis
+from
+	produto p
+inner join tipo_produto tprod
+	on p.fk_tipo_produto_id_tipo = tprod.id_tipo
+inner join tem_interface tint
+	on p.id_produto = tint.fk_produto_id_produto
+inner join 
+(
+	select
+		p.id_produto,
+		tint.fk_interface_id_interface
+	from
+		produto p
+	inner join tipo_produto tprod
+		on p.fk_tipo_produto_id_tipo = tprod.id_tipo
+	inner join tem_interface tint
+		on p.id_produto = tint.fk_produto_id_produto
+	where
+		tprod.nome_tipo not in ('placa mae', 'maquina')	
+) pecas
+	on tint.fk_interface_id_interface = pecas.fk_interface_id_interface
+where
+	tprod.nome_tipo not in ('processador', 'placa de video', 'memoria primaria', 'memoria secundaria', 'maquina')
+group by
+	p.nome_produto
+order by
+	count(p.nome_produto) desc;
