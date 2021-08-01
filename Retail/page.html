@@ -16,11 +16,12 @@
     #header_img 
     {
         width: 100%; 
-        height: 400px;
+        height: 200px;
     }
 
     #main_section
     {
+        position: relative;
         height: 100%;
         width: 60%;
         margin-left: 20%;
@@ -29,12 +30,23 @@
 
     #main_section_header
     {
-        height: 90px;
+        position: relative;
+        height: 60px;
         width: 100%;
         background-color: grey;
         border-radius: 5px;
         padding: 0 0 0 0;
         grid-template-columns: auto auto auto auto auto auto ;
+    }
+
+    #main_section_products
+    {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        background-color: #0044aa;
+        padding-top: 50px;
+        padding-bottom: 20px;
     }
 
     .button-belt
@@ -45,6 +57,7 @@
 
     .button-belt-button 
     {
+        margin-top: 5px;
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 30px;
         text-align: center;
@@ -52,6 +65,93 @@
 
     .button-belt-image
     {
+
+    }
+
+    .product
+    {
+        border-radius: 10px;
+        position: relative;
+        left: 5%;
+        width: 90%;
+        background-color: white;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .product_img
+    {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        left: 40%;
+        width: 20%;
+    }
+
+    .product_info
+    {
+        border: 2px solid;
+        background-color: #f8f8f8F2;
+        border-radius: 2px;
+        border-color: black;
+        margin-top: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-bottom: 2px;
+        padding: 5px
+    }
+
+    .buy_button
+    {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        left: 42.5%;
+        width: 15%;
+        background-color: lightseagreen;
+        border-radius: 4px;
+        border: 0px;
+        color: white;
+        height: 40px;
+    }
+
+    #loginbox
+    {
+        position: absolute;
+        top: 25px;
+        left: 10px;
+        background-color: #00000050;
+        width: 20vw;
+    }
+
+
+    #usuario_label
+    {
+        color: white;
+    }
+
+    #password_label
+    {
+        color: white;
+    }
+
+    #usuario
+    {
+        color: black
+    }
+
+    #password
+    {
+        color: black
+    }
+
+    /* https://www.w3schools.com/howto/howto_css_animate_buttons.asp, grato*/
+    button:active {
+        background-color: cyan;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
     }
 
 </style>
@@ -72,20 +172,27 @@
 
 <body id="body">
     <!--Imagem no topo da pagina-->
-    <div id="header" class="container-fluid">
-        <img id="header_img" src="/resources/boardb.jpg"> 
+    <img id="header_img" src="/resources/boardb.jpg"> 
+    <!--Caixa de login-->
+    <div id="loginbox" class="container-fluid">
+        <input type="text" id="usuario" name="login">
+        <label id="usuario_label" for="usuario">Usuário</label><br><br>
+        <input type="password" id="password" name="password">
+        <label id="password_label" for="password">Senha</label><br><br>
+        <button onclick="buttonLog()" id="log_button">Logar</button>
     </div> 
-
     <!--Corpo principal de atividades-->
     <div id="main_section" class="container-fluid">
         <div id="main_section_header" class="button-belt">
             <!--<div class="button-belt-button"><img class=".button-belt-image" src="/resources/cpu_simple.png"> </div>-->
-            <div class="button-belt-button">cpu</div> 
-            <div class="button-belt-button">gpu</div>
-            <div class="button-belt-button">memp</div>  
-            <div class="button-belt-button">mems</div> 
-            <div class="button-belt-button">mb</div> 
-            <div class="button-belt-button">pc</div> 
+            <div class="button-belt-button"><button onclick="loadProd(1)">cpu</button></div> 
+            <div class="button-belt-button"><button onclick="loadProd(2)">gpu</button></div>
+            <div class="button-belt-button"><button onclick="loadProd(3)">memoria ram</button></div>  
+            <div class="button-belt-button"><button onclick="loadProd(4)">armazenamento</button></div> 
+            <div class="button-belt-button"><button onclick="loadProd(5)">placa mãe</button></div> 
+            <div class="button-belt-button"><button onclick="loadProd(6)">maquinas prontas</button></div> 
+        </div>
+        <div id="main_section_products">
         </div>
     </div> 
 </body>
@@ -93,6 +200,145 @@
 <script>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     // UI
+
+    // Isso é tão errado, mas estamos sem tempo LOL
+    let user_name = null;
+    let user_pass = null;
+
+    async function buttonLog()
+    {
+        let usr    = document.getElementById('usuario').value;
+        let secret = document.getElementById('password').value;
+
+        isauth = await postServer(window.location + "auth", { name: usr, pass: secret})
+
+        if(isauth)
+        {
+            window.alert("Bem vindo");
+            user_name = usr;
+            user_pass = secret;
+        }
+        else
+        {
+            window.alert("Credenciais invalidas.")
+            user_name = null;
+            user_pass = null;
+        }
+    }
+
+    async function loadProd(type)
+    {
+        let data = null;
+        
+        if(type == 1)
+            data = await queryServer("/qproc");
+        else if(type == 2)
+            data = await queryServer("/qvideo");
+        else if(type == 3)
+            data = await queryServer("/qmemp");
+        else if(type == 4)
+            data = await queryServer("/qmems");
+        else if(type == 5)
+            data = await queryServer("/qpmae");
+        else if(type == 6)
+        {
+            data = await queryServer("/qmaq");
+            $("#main_section_products").empty();
+            loadMaquinas(data.columns, data.rows);
+            return
+        }
+        else 
+            console.log("wat")
+
+        $("#main_section_products").empty();
+
+        for(let i=0; i < data.rows.length; i++)
+        {         
+            $("#main_section_products").append(boxProduct(data.columns, data.rows[i]));
+        }
+    }
+
+    function loadMaquinas(columns, rows)
+    {
+        let pos  = [];
+        let id   = rows[0]["id_produto"];
+        let init = 0;
+
+        for(let i = 1; i < rows.length; i++)
+        {
+            if(rows[i]["id_produto"] != id)
+            {
+                pos.push([init, i])
+                init = i;
+                id = rows[i]["id_produto"]
+            }
+        }
+
+        for(let i = 0; i < pos.length; i++)
+        {
+            let row = rows[pos[i][0]]
+            let str = `<div class="product">`;
+            str += `<h3>${row["Nome"]}</h3>`
+            str += `<div><img class="product_img" src="${window.location + "/" + row["link_foto"]}"></div>`
+            str += `<hr>`
+            for(let j=0; j < columns.length; j++)
+            {
+                if(!not_included.includes(columns[j]))
+                    str += `<label class="product_info">${columns[j]} : ${row[columns[j]]}</label>`
+            } 
+
+            str += "<hr> <h3>Peças inclusas</h3>"
+            for(let j=pos[i][0]; j != pos[i][1]; j++)
+            {
+                row = rows[j]
+
+                let unit = "" 
+                if(row["qtd_peca"] > 1)
+                    unit = "unidades"
+                else
+                    unit = "unidade"
+                str += `<label class="product_info">${row["nome_tipo"]} : ${row["nome_produto"]}, ${row["qtd_peca"]} ${unit}</label>`
+            } 
+            str += `<hr> <div><button button onclick="buy(${row["id_produto"]})" class="buy_button"> Comprar </button></div>`;
+            str += `</div>`;
+            $("#main_section_products").append(str);
+        }
+    }
+
+    not_included = ["link_foto", "id_produto", "qtd_peca", "nome_produto", "nome_tipo", "Nome"];
+    function boxProduct(columns, row)
+    {
+        let str = `<div class="product">`;
+        str += `<h3>${row["Nome"]}</h3>`
+        str += `<div><img class="product_img" src="${window.location + "/" + row["link_foto"]}"></div>`
+        str += `<hr>`
+        for(let i=0; i < columns.length; i++)
+        {
+            if(!not_included.includes(columns[i]))
+                str += `<label class="product_info">${columns[i]} : ${row[columns[i]]}</label>`
+        }
+        str += `<hr> <div><button button onclick="buy(${row["id_produto"]})" class="buy_button"> Comprar </button></div>`;
+        str += `</div>`;
+
+        return str;
+    }
+
+    async function buy(id)
+    {
+        let isauth = await authenticate(user_name, user_pass)
+
+        if(!isauth)
+        {
+            window.alert("Faça login para poder comprar.")
+            return;
+        }
+
+        let ret = await postServer(window.location + "buy", { pid: id, name: user_name, pass: user_pass})
+        if(ret)
+            window.alert("Produto comprado com sucesso.")
+        else
+            window.alert("Credenciais invalidas.")
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // Conexao servidor
@@ -112,7 +358,14 @@
         return data;
     };
 
+    async function authenticate(usr, secret)
+    {
+        return await postServer(window.location + "auth", { name: usr, pass: secret})
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Main
+
+    loadProd(6)
 </script>
 
